@@ -89,8 +89,8 @@ export default function Home() {
         )}
 
         <div className={styles.grid}>
-          {summoners && summoners.map(summoner => (
-              <Summoner data={summoner}/>
+          {summoners && summoners.map((summoner, index) => (
+              <Summoner key={index} data={summoner}/>
               )
             )
           }
