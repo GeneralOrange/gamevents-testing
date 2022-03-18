@@ -9,12 +9,16 @@ export default async function handler(req, res) {
     const summonerResponse = await fetch(summonerRequestUrl);
     let summonerData = await summonerResponse.json();
 
-    const summonerID = summonerData.puuid;
-    const matchesRequestUrl = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${summonerID}/ids?start=0&count=20&api_key=${apiKey}`;
+    // const summonerID = summonerData.puuid;
+    // const matchesRequestUrl = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${summonerID}/ids?start=0&count=20&api_key=${apiKey}`;
 
-    const matchesResponse = await fetch(matchesRequestUrl);
-    let matchesData = await matchesResponse.json();
+    // const matchesResponse = await fetch(matchesRequestUrl);
+    // let matchesData = await matchesResponse.json();
+
+    if(summonerData.status){
+        res.status(404).send(summonerData);
+    }
 
 
-    res.status(200).send(matchesData);
+    res.status(200).send(summonerData);
   }
